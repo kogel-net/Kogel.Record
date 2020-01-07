@@ -1,6 +1,6 @@
 ﻿namespace Kogel.Record.Test
 {
-	partial class Form1
+	partial class frmScreen
 	{
 		/// <summary>
 		/// 必需的设计器变量。
@@ -31,6 +31,7 @@
 			this.picScreen = new System.Windows.Forms.PictureBox();
 			this.btnStart = new System.Windows.Forms.Button();
 			this.btnEnd = new System.Windows.Forms.Button();
+			this.btnOpenProgram = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.picScreen)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -63,17 +64,27 @@
 			this.btnEnd.UseVisualStyleBackColor = true;
 			this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
 			// 
-			// Form1
+			// btnOpenProgram
+			// 
+			this.btnOpenProgram.Location = new System.Drawing.Point(174, 10);
+			this.btnOpenProgram.Name = "btnOpenProgram";
+			this.btnOpenProgram.Size = new System.Drawing.Size(117, 23);
+			this.btnOpenProgram.TabIndex = 3;
+			this.btnOpenProgram.Text = "打开一个程序界面";
+			this.btnOpenProgram.UseVisualStyleBackColor = true;
+			this.btnOpenProgram.Click += new System.EventHandler(this.btnOpenProgram_Click);
+			// 
+			// frmScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(910, 555);
+			this.Controls.Add(this.btnOpenProgram);
 			this.Controls.Add(this.btnEnd);
 			this.Controls.Add(this.btnStart);
 			this.Controls.Add(this.picScreen);
-			this.Name = "Form1";
-			this.Text = "Form1";
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Name = "frmScreen";
+			this.Text = "测试录制屏幕";
 			((System.ComponentModel.ISupportInitialize)(this.picScreen)).EndInit();
 			this.ResumeLayout(false);
 
@@ -84,6 +95,7 @@
 		private System.Windows.Forms.PictureBox picScreen;
 		private System.Windows.Forms.Button btnStart;
 		private System.Windows.Forms.Button btnEnd;
+		private System.Windows.Forms.Button btnOpenProgram;
 	}
 }
 

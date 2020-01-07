@@ -2,12 +2,7 @@
 using AForge.Video.FFMPEG;
 using MiniScreenRecorder.AviFile;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -20,12 +15,12 @@ namespace Kogel.Record
 	{
 		#region Fields
 		private int DEFAULT_FRAME_RATE = 10;
-		private int ScreenWidth;
-		private int ScreenHight;
+		protected int ScreenWidth;
+		protected int ScreenHight;
 		private int BitRate;
 		private int FrameRate;
 		private Rectangle ScreenArea;
-		private VideoFileWriter VideoWriter;
+		protected VideoFileWriter VideoWriter;
 		private ScreenCaptureStream VideoStreamer;
 		private FolderBrowserDialog FolderBrowser;
 		private VideoCodec VideoCodec;
@@ -68,7 +63,7 @@ namespace Kogel.Record
 		/// 开始
 		/// </summary>
 		/// <param name="frameEventHandler">每帧回调（默认不需要填）</param>
-		public void Start(NewFrameEventHandler frameEventHandler = null)
+		public virtual void Start(NewFrameEventHandler frameEventHandler = null)
 		{
 			//设置所有显示器
 			foreach (Screen screen in Screen.AllScreens)
@@ -92,7 +87,7 @@ namespace Kogel.Record
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="eventArgs"></param>
-		private void VideoStreamer_NewFrame(object sender, NewFrameEventArgs eventArgs)
+		protected virtual void VideoStreamer_NewFrame(object sender, NewFrameEventArgs eventArgs)
 		{
 			this.VideoWriter.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
 		}
@@ -100,7 +95,7 @@ namespace Kogel.Record
 		/// <summary>
 		/// 结束
 		/// </summary>
-		public void End()
+		public virtual void End()
 		{
 			VideoStreamer.Stop();
 			VideoWriter.Close();
