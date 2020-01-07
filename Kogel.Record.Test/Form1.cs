@@ -18,8 +18,13 @@ namespace Kogel.Record.Test
 		public Form1()
 		{
 			InitializeComponent();
+			
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
 			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".avi";
-			recorder = new ScreenRecorder(recorderPath);
+			recorder = new ScreenRecorder(recorderPath, 10, true);
 		}
 
 		/// <summary>
@@ -44,7 +49,7 @@ namespace Kogel.Record.Test
 		}
 
 		/// <summary>
-		/// 结束
+		/// 结束录制
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

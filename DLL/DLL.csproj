@@ -94,6 +94,7 @@
     <Content Include="IPPrototyper.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Microsoft.DirectX.DirectSound.dll" />
     <Content Include="Microsoft.DirectX.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

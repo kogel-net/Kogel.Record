@@ -110,6 +110,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\AForge.Vision.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\source\repos\Kogel.Record\DLL\Microsoft.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.DirectSound">
+      <HintPath>..\DLL\Microsoft.DirectX.DirectSound.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -132,6 +139,7 @@
     <Compile Include="AviFile\VideoStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenRecorder.cs" />
+    <Compile Include="WavRecorder.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

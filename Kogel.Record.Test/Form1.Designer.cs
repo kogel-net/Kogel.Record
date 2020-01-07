@@ -61,6 +61,7 @@
 			this.btnEnd.TabIndex = 2;
 			this.btnEnd.Text = "结束";
 			this.btnEnd.UseVisualStyleBackColor = true;
+			this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
 			// 
 			// Form1
 			// 
@@ -72,6 +73,7 @@
 			this.Controls.Add(this.picScreen);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.picScreen)).EndInit();
 			this.ResumeLayout(false);
 
