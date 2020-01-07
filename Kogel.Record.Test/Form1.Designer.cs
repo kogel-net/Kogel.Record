@@ -42,7 +42,6 @@
 			this.picScreen.Size = new System.Drawing.Size(910, 555);
 			this.picScreen.TabIndex = 0;
 			this.picScreen.TabStop = false;
-			this.picScreen.DockChanged += new System.EventHandler(this.picScreen_DockChanged);
 			// 
 			// btnStart
 			// 
