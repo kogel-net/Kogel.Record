@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +17,9 @@ namespace Kogel.Record.Test
 		[STAThread]
 		static void Main()
 		{
+			//初始化DLL配置
+			Global.InitDllPath();
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new frmScreen());

@@ -35,11 +35,10 @@
   <ItemGroup>
     <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\AForge.Video.dll</HintPath>
+      <HintPath>..\Kogel.Record\DLL\AForge.Video.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Video.FFMPEG, Version=2.2.5.0, Culture=neutral, PublicKeyToken=03563089b1be05dd, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\AForge.Video.FFMPEG.dll</HintPath>
+    <Reference Include="AForge.Video.FFMPEG">
+      <HintPath>..\Kogel.Record\DLL\AForge.Video.FFMPEG.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -106,10 +105,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLL\DLL.csproj">
-      <Project>{5ee90cfe-db42-4838-ae48-9ed6e74ea55c}</Project>
-      <Name>DLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kogel.Record\Kogel.Record.csproj">
       <Project>{dbf952f8-93d8-439c-80ec-396711dd0b40}</Project>
       <Name>Kogel.Record</Name>
