@@ -157,7 +157,7 @@ namespace Kogel.Record.Extension
 		/// <summary>
 		/// 释放内存
 		/// </summary>
-		public static void ClearMemory()
+		public async static void ClearMemory()
 		{
 			//获得当前工作进程
 			Process proc = Process.GetCurrentProcess();
@@ -170,6 +170,7 @@ namespace Kogel.Record.Extension
 				{
 					SetProcessWorkingSetSize(Process.GetCurrentProcess().Handle, -1, -1);
 				}
+				await Task.Delay(10);
 			}
 		}
 	}

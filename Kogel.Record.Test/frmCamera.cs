@@ -1,5 +1,4 @@
 ﻿using AForge.Video;
-using Kogel.Record.Extension;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,35 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Kogel.Record.Extension.WindowApi;
 
 namespace Kogel.Record.Test
 {
-	public partial class frmProgram : Form
+	public partial class frmCamera : Form
 	{
-		private ProgramRecorder recorder { get; set; }
+		private CameraRecorder recorder { get; set; }
 		private string recorderPath { get; set; }
-		private List<WindowInfo> programList { get; set; }
-
-		public frmProgram()
+		public frmCamera()
 		{
 			InitializeComponent();
+			//初始化录制器
 			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".mp4";
-			//初始化所有桌面程序
-			programList = WindowApi.GetAllDesktopWindows().Where(x => !string.IsNullOrEmpty(x.szWindowName)).ToList();
-			//this.cboProgram.ValueMember = "hWnd";
-			//this.cboProgram.DisplayMember = "szWindowName";
-			this.cboProgram.DataSource = programList.Select(x => x.szWindowName).ToList();
+			recorder = new CameraRecorder(recorderPath, 10, true);
 		}
 
 		/// <summary>
-		/// 开始
+		/// 开始录制
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void btnStart_Click(object sender, EventArgs e)
 		{
-			recorder = new ProgramRecorder(programList[this.cboProgram.SelectedIndex].hWnd, this.cboProgram.SelectedText, recorderPath, 10, true);
 			//开始并设置显示器
 			recorder.Start(VideoStreamer_NewFrame);
 		}
@@ -53,7 +45,7 @@ namespace Kogel.Record.Test
 		}
 
 		/// <summary>
-		/// 结束
+		/// 结束录制
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

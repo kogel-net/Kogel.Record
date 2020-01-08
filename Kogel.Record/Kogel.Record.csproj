@@ -137,6 +137,7 @@
     <Compile Include="AviFile\EditableVideoStream.cs" />
     <Compile Include="AviFile\RecordSound.cs" />
     <Compile Include="AviFile\VideoStream.cs" />
+    <Compile Include="CameraRecorder.cs" />
     <Compile Include="Extension\WindowApi.cs" />
     <Compile Include="ProgramRecorder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

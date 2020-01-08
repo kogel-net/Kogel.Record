@@ -20,7 +20,7 @@ namespace Kogel.Record.Test
 		{
 			InitializeComponent();
 			//初始化录制器
-			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".avi";
+			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".mp4";
 			recorder = new ScreenRecorder(recorderPath, 10, true);
 		}
 
@@ -68,6 +68,11 @@ namespace Kogel.Record.Test
 		private void btnOpenProgram_Click(object sender, EventArgs e)
 		{
 			new frmProgram().Show();
+		}
+
+		private void btnOpenCamera_Click(object sender, EventArgs e)
+		{
+			new frmCamera().Show();
 		}
 	}
 }
