@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -148,6 +149,28 @@ namespace Kogel.Record.Extension
 			}, 0);
 
 			return wndList.ToArray();
+		}
+
+		[DllImport("kernel32.dll", EntryPoint = "SetProcessWorkingSetSize")]
+		public static extern int SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
+
+		/// <summary>
+		/// 释放内存
+		/// </summary>
+		public static void ClearMemory()
+		{
+			//获得当前工作进程
+			Process proc = Process.GetCurrentProcess();
+			long usedMemory = proc.PrivateMemorySize64;
+			if (usedMemory > 1024 * 1024 * 20)
+			{
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
+				if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+				{
+					SetProcessWorkingSetSize(Process.GetCurrentProcess().Handle, -1, -1);
+				}
+			}
 		}
 	}
 }

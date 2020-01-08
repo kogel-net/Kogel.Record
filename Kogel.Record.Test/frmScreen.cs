@@ -1,4 +1,5 @@
 ﻿using AForge.Video;
+using Kogel.Record.Extension;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,8 @@ namespace Kogel.Record.Test
 			recorder.Start(VideoStreamer_NewFrame);
 		}
 
+		int totalFrame = 1;
+
 		/// <summary>
 		/// 每帧录制帧数回调
 		/// </summary>
@@ -42,6 +45,14 @@ namespace Kogel.Record.Test
 		private void VideoStreamer_NewFrame(object sender, NewFrameEventArgs eventArgs)
 		{
 			this.picScreen.Image = (Bitmap)eventArgs.Frame.Clone();
+			try
+			{
+				this.label1.Invoke(new EventHandler((s, e) =>
+				{
+					this.label1.Text = (totalFrame++).ToString();
+				}));
+			}
+			catch { }
 		}
 
 		/// <summary>

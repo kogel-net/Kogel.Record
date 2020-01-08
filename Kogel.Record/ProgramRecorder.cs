@@ -26,6 +26,11 @@ namespace Kogel.Record
 		private IntPtr hwnd;
 
 		/// <summary>
+		/// 每帧回调
+		/// </summary>
+		private NewFrameEventHandler frameEventHandler { get; set; }
+
+		/// <summary>
 		/// 程序界面录制
 		/// </summary>
 		/// <param name="hwnd">程序句柄</param>
@@ -56,7 +61,8 @@ namespace Kogel.Record
 			base.ScreenWidth = programBmp.Width % 2 == 0 ? programBmp.Width : programBmp.Width - 1;
 			base.ScreenHight = programBmp.Height % 2 == 0 ? programBmp.Height : programBmp.Height - 1;
 			//开始录制
-			base.Start(frameEventHandler);
+			base.Start(null);
+			this.frameEventHandler = frameEventHandler;
 		}
 
 		/// <summary>
@@ -74,7 +80,13 @@ namespace Kogel.Record
 				graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
 				graphics.DrawImage(programBmp, 0, 0, base.ScreenWidth, base.ScreenHight);
 			}
-			base.VideoStreamer_NewFrame(sender, new NewFrameEventArgs(newBitmap));
+			var newFrameEvent = new NewFrameEventArgs(newBitmap);
+			base.VideoStreamer_NewFrame(sender, newFrameEvent);
+			try
+			{
+				frameEventHandler.Invoke(sender, newFrameEvent);
+			}
+			catch { }
 		}
 
 		/// <summary>

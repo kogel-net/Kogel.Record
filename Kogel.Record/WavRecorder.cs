@@ -188,7 +188,7 @@ namespace Kogel.Record
 			{
 				mRecBuffer = new CaptureBuffer(bufferdescription, mCapDev);
 			}
-			catch (ArgumentNullException)
+			catch (Exception ex)
 			{ }
 
 			mNextCaptureOffset = 0;

@@ -5,6 +5,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using Kogel.Record.Extension;
 
 namespace Kogel.Record
 {
@@ -35,6 +36,10 @@ namespace Kogel.Record
 		/// </summary>
 		private WavRecorder wavRecorder { get; set; }
 
+		/// <summary>
+		/// 总帧数
+		/// </summary>
+		private int TotalFrame { get; set; }
 		/// <summary>
 		/// 屏幕录制
 		/// </summary>
@@ -90,6 +95,12 @@ namespace Kogel.Record
 		protected virtual void VideoStreamer_NewFrame(object sender, NewFrameEventArgs eventArgs)
 		{
 			this.VideoWriter.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
+
+			//每100帧回收一次虚拟内存
+			if ((TotalFrame++) % 100 == 0)
+			{
+				WindowApi.ClearMemory();
+			}
 		}
 
 		/// <summary>

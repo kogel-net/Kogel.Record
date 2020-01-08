@@ -32,6 +32,7 @@
 			this.btnStart = new System.Windows.Forms.Button();
 			this.btnEnd = new System.Windows.Forms.Button();
 			this.btnOpenProgram = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.picScreen)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -74,11 +75,21 @@
 			this.btnOpenProgram.UseVisualStyleBackColor = true;
 			this.btnOpenProgram.Click += new System.EventHandler(this.btnOpenProgram_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(308, 15);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(11, 12);
+			this.label1.TabIndex = 4;
+			this.label1.Text = "0";
+			// 
 			// frmScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(910, 555);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnOpenProgram);
 			this.Controls.Add(this.btnEnd);
 			this.Controls.Add(this.btnStart);
@@ -87,6 +98,7 @@
 			this.Text = "测试录制屏幕";
 			((System.ComponentModel.ISupportInitialize)(this.picScreen)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -96,6 +108,7 @@
 		private System.Windows.Forms.Button btnStart;
 		private System.Windows.Forms.Button btnEnd;
 		private System.Windows.Forms.Button btnOpenProgram;
+		private System.Windows.Forms.Label label1;
 	}
 }
 
