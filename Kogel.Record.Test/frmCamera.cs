@@ -19,7 +19,7 @@ namespace Kogel.Record.Test
 		{
 			InitializeComponent();
 			//初始化录制器
-			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".mp4";
+			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".avi";
 			recorder = new CameraRecorder(recorderPath, 10, true);
 		}
 

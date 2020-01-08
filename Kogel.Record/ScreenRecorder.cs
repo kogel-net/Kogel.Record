@@ -55,7 +55,7 @@ namespace Kogel.Record
 		/// <param name="defaultFrameRate">默认帧数</param>
 		/// <param name="isLoopingWav">是否录制声音(默认不录制)</param>
 		/// <param name="videoCodec">视频格式</param>
-		public ScreenRecorder(string aviFilePath, int defaultFrameRate = 10, bool isLoopingWav = false, VideoCodec videoCodec = VideoCodec.MPEG4)
+		public ScreenRecorder(string aviFilePath, int defaultFrameRate = 10, bool isLoopingWav = false, VideoCodec videoCodec = VideoCodec.MSMPEG4v2)
 		{
 			this.AviFilePath = aviFilePath;
 			this.DEFAULT_FRAME_RATE = defaultFrameRate;

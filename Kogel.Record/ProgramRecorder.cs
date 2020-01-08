@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video;
+using AForge.Video.FFMPEG;
 using Kogel.Record.Extension;
 using Kogel.Record.Interfaces;
 
@@ -39,8 +40,9 @@ namespace Kogel.Record
 		/// <param name="aviFilePath">视频路径</param>
 		/// <param name="defaultFrameRate">默认帧数</param>
 		/// <param name="isLoopingWav">是否录制声音(默认不录制)</param>
-		public ProgramRecorder(IntPtr hwnd, string programName, string aviFilePath, int defaultFrameRate = 10, bool isLoopingWav = false)
-			: base(aviFilePath, defaultFrameRate, isLoopingWav)
+		/// <param name="videoCodec">录制格式</param>
+		public ProgramRecorder(IntPtr hwnd, string programName, string aviFilePath, int defaultFrameRate = 10, bool isLoopingWav = false, VideoCodec videoCodec = VideoCodec.MSMPEG4v2)
+			: base(aviFilePath, defaultFrameRate, isLoopingWav, videoCodec)
 		{
 			this.programName = programName;
 			this.hwnd = hwnd;
@@ -76,7 +78,7 @@ namespace Kogel.Record
 			Bitmap programBmp = WindowApi.GetWindowCapture(hwnd);
 			Bitmap newBitmap = new Bitmap(this.ScreenWidth, this.ScreenHight);
 			//修改图片大小
-			using(Graphics graphics = Graphics.FromImage(newBitmap))
+			using (Graphics graphics = Graphics.FromImage(newBitmap))
 			{
 				graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
 				graphics.DrawImage(programBmp, 0, 0, base.ScreenWidth, base.ScreenHight);

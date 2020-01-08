@@ -20,7 +20,7 @@ namespace Kogel.Record.Test
 		{
 			InitializeComponent();
 			//初始化录制器
-			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".mp4";
+			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".avi";
 			recorder = new ScreenRecorder(recorderPath, 10, true);
 		}
 
@@ -77,7 +77,16 @@ namespace Kogel.Record.Test
 
 		private void btnPause_Click(object sender, EventArgs e)
 		{
-			recorder.Pause();
+			if (recorder.RecorderStatus == AviFile.RecorderStatus.Start)
+			{
+				recorder.Pause();
+				this.btnPause.Text = "继续";
+			}
+			else
+			{
+				recorder.Start();
+				this.btnPause.Text = "暂停";
+			}
 		}
 	}
 }

@@ -22,7 +22,7 @@ namespace Kogel.Record.Test
 		public frmProgram()
 		{
 			InitializeComponent();
-			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".mp4";
+			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".avi";
 			//初始化所有桌面程序
 			programList = WindowApi.GetAllDesktopWindows().Where(x => !string.IsNullOrEmpty(x.szWindowName)).ToList();
 			//this.cboProgram.ValueMember = "hWnd";
