@@ -74,5 +74,10 @@ namespace Kogel.Record.Test
 		{
 			new frmCamera().Show();
 		}
+
+		private void btnPause_Click(object sender, EventArgs e)
+		{
+			recorder.Pause();
+		}
 	}
 }

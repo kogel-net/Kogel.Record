@@ -1,7 +1,9 @@
 ﻿using AForge.Video;
 using AForge.Video.DirectShow;
 using AForge.Video.FFMPEG;
+using Kogel.Record.AviFile;
 using Kogel.Record.Extension;
+using Kogel.Record.Interfaces;
 using MiniScreenRecorder.AviFile;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace Kogel.Record
 	/// <summary>
 	/// 录制摄像头
 	/// </summary>
-	public class CameraRecorder
+	public class CameraRecorder: IRecorder
 	{
 		#region Fields
 		private int DEFAULT_FRAME_RATE = 10;
@@ -52,6 +54,11 @@ namespace Kogel.Record
 		private int TotalFrame { get; set; }
 
 		/// <summary>
+		/// 录制状态
+		/// </summary>
+		public RecorderStatus RecorderStatus { get; set; }
+
+		/// <summary>
 		/// 摄像头录制
 		/// </summary>
 		/// <param name="aviFilePath">视频路径</param>
@@ -82,6 +89,14 @@ namespace Kogel.Record
 		/// <param name="frameEventHandler">每帧回调（默认不需要填）</param>
 		public virtual void Start(NewFrameEventHandler frameEventHandler = null)
 		{
+			//继续播放
+			if (this.RecorderStatus == RecorderStatus.Pause)
+			{
+				this.VideoStreamer.Start();
+				this.wavRecorder.Start();
+				return;
+			}
+			this.RecorderStatus = RecorderStatus.Start;
 			try
 			{
 				//获取摄像头列表
@@ -148,6 +163,15 @@ namespace Kogel.Record
 				//删除临时音频文件
 				try { File.Delete(wavRecorder.WavFilePath); } catch { }
 			}
+		}
+
+		/// <summary>
+		/// 暂停
+		/// </summary>
+		public void Pause()
+		{
+			this.VideoStreamer.Stop();
+			this.RecorderStatus = RecorderStatus.Pause;
 		}
 	}
 }

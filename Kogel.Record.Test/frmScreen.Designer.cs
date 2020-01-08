@@ -34,6 +34,7 @@
 			this.btnOpenProgram = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnOpenCamera = new System.Windows.Forms.Button();
+			this.btnPause = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.picScreen)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -58,7 +59,7 @@
 			// 
 			// btnEnd
 			// 
-			this.btnEnd.Location = new System.Drawing.Point(93, 10);
+			this.btnEnd.Location = new System.Drawing.Point(173, 10);
 			this.btnEnd.Name = "btnEnd";
 			this.btnEnd.Size = new System.Drawing.Size(75, 23);
 			this.btnEnd.TabIndex = 2;
@@ -68,7 +69,7 @@
 			// 
 			// btnOpenProgram
 			// 
-			this.btnOpenProgram.Location = new System.Drawing.Point(174, 10);
+			this.btnOpenProgram.Location = new System.Drawing.Point(254, 10);
 			this.btnOpenProgram.Name = "btnOpenProgram";
 			this.btnOpenProgram.Size = new System.Drawing.Size(117, 23);
 			this.btnOpenProgram.TabIndex = 3;
@@ -79,7 +80,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(422, 15);
+			this.label1.Location = new System.Drawing.Point(502, 15);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(11, 12);
 			this.label1.TabIndex = 4;
@@ -87,7 +88,7 @@
 			// 
 			// btnOpenCamera
 			// 
-			this.btnOpenCamera.Location = new System.Drawing.Point(297, 10);
+			this.btnOpenCamera.Location = new System.Drawing.Point(377, 10);
 			this.btnOpenCamera.Name = "btnOpenCamera";
 			this.btnOpenCamera.Size = new System.Drawing.Size(117, 23);
 			this.btnOpenCamera.TabIndex = 5;
@@ -95,11 +96,22 @@
 			this.btnOpenCamera.UseVisualStyleBackColor = true;
 			this.btnOpenCamera.Click += new System.EventHandler(this.btnOpenCamera_Click);
 			// 
+			// btnPause
+			// 
+			this.btnPause.Location = new System.Drawing.Point(93, 10);
+			this.btnPause.Name = "btnPause";
+			this.btnPause.Size = new System.Drawing.Size(75, 23);
+			this.btnPause.TabIndex = 6;
+			this.btnPause.Text = "暂停";
+			this.btnPause.UseVisualStyleBackColor = true;
+			this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+			// 
 			// frmScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(910, 555);
+			this.Controls.Add(this.btnPause);
 			this.Controls.Add(this.btnOpenCamera);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnOpenProgram);
@@ -122,6 +134,7 @@
 		private System.Windows.Forms.Button btnOpenProgram;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnOpenCamera;
+		private System.Windows.Forms.Button btnPause;
 	}
 }
 

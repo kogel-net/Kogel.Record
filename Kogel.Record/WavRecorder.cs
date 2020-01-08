@@ -4,6 +4,7 @@ using System.Threading;
 using Microsoft.DirectX;
 using Microsoft.DirectX.DirectSound;
 using System.Windows.Forms;
+using Kogel.Record.AviFile;
 
 namespace Kogel.Record
 {
@@ -32,6 +33,11 @@ namespace Kogel.Record
 		private BinaryWriter mWriter = null;         // 写文件  
 		public string WavFilePath { get; set; }
 		#endregion
+
+		/// <summary>
+		/// 录制状态
+		/// </summary>
+		public RecorderStatus RecorderStatus { get; set; }
 
 		/// <summary>
 		/// 声音录制
@@ -360,6 +366,14 @@ namespace Kogel.Record
 		/// </summary>
 		public void Start()
 		{
+			//继续播放
+			if (this.RecorderStatus == RecorderStatus.Pause)
+			{
+				this.mRecBuffer.Start(true);
+				return;
+			}
+			this.RecorderStatus = RecorderStatus.Start;
+
 			InitCaptureDevice();
 			mWavFormat = CreateWaveFormat();
 			SetFileName(WavFilePath);
@@ -367,10 +381,20 @@ namespace Kogel.Record
 		}
 
 		/// <summary>
+		/// 暂停
+		/// </summary>
+		public void Pause()
+		{
+			this.RecorderStatus = RecorderStatus.Pause;
+			mRecBuffer.Stop();
+		}
+
+		/// <summary>
 		/// 结束
 		/// </summary>
 		public void End()
 		{
+			this.RecorderStatus = RecorderStatus.End;
 			RecStop();
 		}
 	}

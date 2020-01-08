@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video;
 using Kogel.Record.Extension;
+using Kogel.Record.Interfaces;
 
 namespace Kogel.Record
 {
 	/// <summary>
 	/// 程序界面录制
 	/// </summary>
-	public class ProgramRecorder : ScreenRecorder
+	public class ProgramRecorder : ScreenRecorder, IRecorder
 	{
 		/// <summary>
 		/// 程序名称

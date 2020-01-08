@@ -6,13 +6,15 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using Kogel.Record.Extension;
+using Kogel.Record.Interfaces;
+using Kogel.Record.AviFile;
 
 namespace Kogel.Record
 {
 	/// <summary>
 	/// 屏幕录制
 	/// </summary>
-	public class ScreenRecorder
+	public class ScreenRecorder : IRecorder
 	{
 		#region Fields
 		private int DEFAULT_FRAME_RATE = 10;
@@ -40,6 +42,12 @@ namespace Kogel.Record
 		/// 总帧数
 		/// </summary>
 		private int TotalFrame { get; set; }
+
+		/// <summary>
+		/// 录制状态
+		/// </summary>
+		public RecorderStatus RecorderStatus { get; set; }
+
 		/// <summary>
 		/// 屏幕录制
 		/// </summary>
@@ -71,6 +79,15 @@ namespace Kogel.Record
 		/// <param name="frameEventHandler">每帧回调（默认不需要填）</param>
 		public virtual void Start(NewFrameEventHandler frameEventHandler = null)
 		{
+			//继续播放
+			if (this.RecorderStatus == RecorderStatus.Pause)
+			{
+				this.VideoStreamer.Start();
+				this.wavRecorder.Start();
+				return;
+			}
+			this.RecorderStatus = RecorderStatus.Start;
+
 			//设置所有显示器
 			foreach (Screen screen in Screen.AllScreens)
 			{
@@ -109,6 +126,7 @@ namespace Kogel.Record
 		/// </summary>
 		public virtual void End()
 		{
+			this.RecorderStatus = RecorderStatus.End;
 			VideoStreamer.Stop();
 			VideoWriter.Close();
 			//是否需要录制声音
@@ -121,6 +139,20 @@ namespace Kogel.Record
 				aviManager.Close();
 				//删除临时音频文件
 				try { File.Delete(wavRecorder.WavFilePath); } catch { }
+			}
+		}
+
+		/// <summary>
+		/// 暂停
+		/// </summary>
+		public void Pause()
+		{
+			this.VideoStreamer.Stop();
+			this.RecorderStatus = RecorderStatus.Pause;
+			//是否需要暂停录制声音
+			if (wavRecorder != null)
+			{
+				wavRecorder.Pause();
 			}
 		}
 	}
