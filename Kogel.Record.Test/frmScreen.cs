@@ -21,7 +21,7 @@ namespace Kogel.Record.Test
 			InitializeComponent();
 			//初始化录制器
 			recorderPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.ToString("MMddHHmmss") + ".avi";
-			recorder = new ScreenRecorder(recorderPath, 10, true);
+			recorder = new ScreenRecorder(recorderPath, 10, false);
 		}
 
 		/// <summary>

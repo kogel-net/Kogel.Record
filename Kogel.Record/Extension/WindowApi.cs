@@ -157,12 +157,12 @@ namespace Kogel.Record.Extension
 		/// <summary>
 		/// 释放内存
 		/// </summary>
-		public async static void ClearMemory()
+		public async static Task ClearMemory()
 		{
 			//获得当前工作进程
 			Process proc = Process.GetCurrentProcess();
 			long usedMemory = proc.PrivateMemorySize64;
-			if (usedMemory > 1024 * 1024 * 20)
+			if (usedMemory > 1024 * 1024 * 10)
 			{
 				GC.Collect();
 				GC.WaitForPendingFinalizers();

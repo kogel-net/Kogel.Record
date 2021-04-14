@@ -93,7 +93,10 @@ namespace Kogel.Record
 			if (this.RecorderStatus == RecorderStatus.Pause)
 			{
 				this.VideoStreamer.Start();
-				this.wavRecorder.Start();
+				if (wavRecorder != null)
+					this.wavRecorder.Start();
+
+				this.RecorderStatus = RecorderStatus.Start;
 				return;
 			}
 			this.RecorderStatus = RecorderStatus.Start;
